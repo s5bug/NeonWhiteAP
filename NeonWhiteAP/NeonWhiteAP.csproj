@@ -3,8 +3,7 @@
     <PropertyGroup>
         <!-- three versions instead of four like most NET apps -->
         <Version>1.0.0</Version>
-        <AssemblyName>NeonWhitePlugin</AssemblyName>
-        <Product>NeonWhitePlugin</Product>
+        <Product>NeonWhiteAP</Product>
         <Authors>Aly</Authors>
 
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -16,6 +15,8 @@
             https://nuget.bepinex.dev/v3/index.json;
             https://nuget.samboy.dev/v3/index.json
         </RestoreAdditionalProjectSources>
+        <PackageId>NeonWhiteAP</PackageId>
+        <RootNamespace>NeonWhiteAP</RootNamespace>
     </PropertyGroup>
 
     <Import Project="$(MSBuildProjectFullPath).user" Condition="Exists('$(MSBuildProjectFullPath).user')"/>
@@ -47,8 +48,24 @@
             <HintPath>$(ManagedPath)/UnityEngine.dll</HintPath>
             <Private>false</Private>
         </Reference>
+        <Reference Include="UnityEngine.AnimationModule">
+            <HintPath>$(ManagedPath)/UnityEngine.AnimationModule.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>$(ManagedPath)/UnityEngine.CoreModule.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <HintPath>$(ManagedPath)/UnityEngine.UI.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+            <HintPath>$(ManagedPath)/UnityEngine.UIModule.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro">
+            <HintPath>$(ManagedPath)/Unity.TextMeshPro.dll</HintPath>
             <Private>false</Private>
         </Reference>
     </ItemGroup>
@@ -58,12 +75,9 @@
         <Ignore Include="res\**" />
         <EmbeddedResource Include="res\**" />
     </ItemGroup>
-    <ItemGroup>
-      <Content Include="NeonWhitePlugin.csproj.user" />
-    </ItemGroup>
 
     <!-- auto copy to bepinex folder; you don't need this but it's helpful -->
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="xcopy /Y /I &quot;$(TargetDir)&quot; &quot;$(NeonWhitePath)/BepInEx/plugins/NeonWhitePlugin&quot;" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))'" />
+        <Exec Command="xcopy /Y /I &quot;$(TargetDir)&quot; &quot;$(NeonWhitePath)/BepInEx/plugins/NeonWhiteAP&quot;" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))'" />
     </Target>
 </Project>
