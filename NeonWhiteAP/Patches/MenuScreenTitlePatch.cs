@@ -12,6 +12,10 @@ public class MenuScreenTitlePatch {
     private static void OnSetVisible(MenuScreenTitle __instance, bool animate) {
         var mainMenu = __instance.transform.parent.parent;
         var titleButtons = mainMenu.Find("Panel/Title Panel/Title Buttons");
+
+        var alreadyInjected = titleButtons.Find("Archipelago Button");
+        if(alreadyInjected != null) return;
+        
         var quitButtonHolder = titleButtons.Find("Quit Button");
         var quitBhRt = quitButtonHolder.GetComponent<RectTransform>();
         var quitAnimator = quitButtonHolder.GetComponent<Animator>();
